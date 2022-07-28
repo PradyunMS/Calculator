@@ -1,5 +1,6 @@
 function getLimit(expressions, UPBs, LWBs, value) {
   let x;
+  let delta = 0.0000000001;
 
   if (value == -Infinity) {
     if (LWBs[0] == -Infinity) {
@@ -23,12 +24,23 @@ function getLimit(expressions, UPBs, LWBs, value) {
     }
   }
 
+  if (isNaN(eval(expressions[currentexp]))) {
+    x = value + delta;
+
+    let value1 = eval(expressions[currentexp]);
+
+    x = value - delta;
+
+    let value2 = eval(expressions[currentexp]);
+
+    if (Math.abs(value2 - value1) <= delta) {
+      return value2;
+    }
+  }
+
   if (value != LWBs[currentexp] && value != UPBs[currentexp]) {
     x = value;
     return eval(expressions[currentexp]);
-  } else {
-    if (value == LWBs[currentexp]) {
-    }
   }
 }
 

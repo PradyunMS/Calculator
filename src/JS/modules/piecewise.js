@@ -6,9 +6,9 @@ let UPB = document.querySelector("#upper");
 let button = document.querySelector("#addexp");
 let plus = document.querySelector("#anotherone");
 // user will input expressions and their corresponding ranges. Ex: x**2   -2 < x < 2
-let expressions = ["x**2", "x**x"]; // [ "x**2", "x+x", "x**x"]
-let LWBs = ["2", "17"]; //[-2, -1 , 0]
-let UPBs = ["8", "25"]; //[2 , 4, 6]
+let expressions = ["x**2", "x**(1/2)", "(x-55)/((x-55)*(x-7))"]; // [ "x**2", "x+x", "x**x"]
+let LWBs = ["2", "17", "50"]; //[-2, -1 , 0]
+let UPBs = ["8", "25", "100"]; //[2 , 4, 6]
 
 function addtoexpressions(func) {
   expressions.push(func);
@@ -42,4 +42,4 @@ plus.addEventListener("click", () => {
   UPB.value = "";
 });
 
-console.log(getLimit(expressions, UPBs, LWBs, 18));
+console.log(getLimit(expressions, UPBs, LWBs, 55));
